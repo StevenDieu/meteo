@@ -1,4 +1,4 @@
-package com.fges.meteo;
+package com.fges.meteo.ui.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -7,22 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import com.fges.meteo.R;
 
-public class ExamplePluginButter extends AppCompatActivity {
-
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.fab)
-    FloatingActionButton actionButton;
+public class TestPicasso extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_example_plugin_butter);
-        ButterKnife.bind(this);
+        setContentView(R.layout.activity_test_picasso);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -36,7 +28,4 @@ public class ExamplePluginButter extends AppCompatActivity {
         });
     }
 
-    @OnClick(R.id.fab)
-    public void onClick() {
-    }
 }

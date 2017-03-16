@@ -16,12 +16,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Test"
-            android:label="@string/title_activity_test"
+            android:name=".ui.activity.ExamplePluginButter"
+            android:label="@string/title_activity_example_plugin_butter"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ExamplePluginButter"
-            android:label="@string/title_activity_example_plugin_butter"
+            android:name=".ui.activity.TestPicasso"
+            android:label="@string/title_activity_test_picasso"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
