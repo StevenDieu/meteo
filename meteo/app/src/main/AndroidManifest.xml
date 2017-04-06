@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fges.meteo">
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -19,10 +21,6 @@
             android:name=".Test"
             android:label="@string/title_activity_test"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ExamplePluginButter"
-            android:label="@string/title_activity_example_plugin_butter"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
