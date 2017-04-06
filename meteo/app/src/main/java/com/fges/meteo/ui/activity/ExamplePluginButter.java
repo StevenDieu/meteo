@@ -7,24 +7,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import android.widget.ImageView;
-
 import com.fges.meteo.R;
-import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-public class TestPicasso extends AppCompatActivity {
-    @BindView(R.id.imageView)
-    ImageView mImageView;
+public class ExamplePluginButter extends AppCompatActivity {
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.fab)
+    FloatingActionButton actionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_picasso);
+        setContentView(R.layout.activity_example_plugin_butter);
         ButterKnife.bind(this);
-        Picasso.with(this).load("http://i.imgur.com/DvpvklR.png").into(mImageView);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,4 +38,7 @@ public class TestPicasso extends AppCompatActivity {
         });
     }
 
+    @OnClick(R.id.fab)
+    public void onClick() {
+    }
 }

@@ -18,9 +18,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Test"
-            android:label="@string/title_activity_test"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".ui.activity.TestPicasso"
+            android:label="@string/title_activity_test_picasso"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
