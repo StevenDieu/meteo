@@ -1,6 +1,3 @@
 <resources>
     <string name="app_name">Meteo</string>
-    <string name="title_activity_test">Test</string>
-    <string name="title_activity_example_plugin_butter">ExamplePluginButter</string>
-    <string name="title_activity_test_picasso">TestPicasso</string>
 </resources>
