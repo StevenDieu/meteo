@@ -16,8 +16,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class ServiceGenerator {
+    private static final String SECRET_KEY = "c0182117c391ba46c720bf9119d0b682";
+    private static final String BASE_URL = "https://api.darksky.net/";
+    private static final String COMMA = ",";
 
-    private static final String BASE_URL = "http://api.brewerydb.com/v2/";
+    private static Double mLatitude;
+    private static Double mLongitude;
+    private static Long mDateTime;
 
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
@@ -27,40 +32,45 @@ public class ServiceGenerator {
 
     private static Retrofit retrofit = builder.build();
 
+
     private static OkHttpClient configureHttpClient() {
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        // set your desired log level
+        final HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
-        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        // add your other interceptors …
+        final OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
-        // add logging as last interceptor
-        httpClient.addInterceptor(logging);  // <-- this is the important line!
+        httpClient.addInterceptor(logging);
 
         httpClient.addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Interceptor.Chain chain) throws IOException {
-                Request original = chain.request();
-                HttpUrl originalHttpUrl = original.url();
+                final Request original = chain.request();
+                final HttpUrl originalHttpUrl = original.url();
 
-                HttpUrl url = originalHttpUrl.newBuilder()
-                        .addQueryParameter("key", "323533b16196ae882a82889439c124e0")
+                final HttpUrl url = originalHttpUrl.newBuilder()
+                        .addPathSegment(SECRET_KEY)
+                        .addPathSegment(mLatitude + COMMA + mLongitude + COMMA + mDateTime)
+                        .addQueryParameter("exclude", "flags")
+                        .addQueryParameter("lang", "fr")
                         .build();
 
-                // Request customization: add request headers
-                Request.Builder requestBuilder = original.newBuilder()
+                final Request.Builder requestBuilder = original.newBuilder()
                         .url(url);
 
-                Request request = requestBuilder.build();
+                final Request request = requestBuilder.build();
                 return chain.proceed(request);
             }
         });
         return httpClient.build();
     }
 
-    public static<S> S createService(
-            Class<S> serviceClass) {
+    public static <S> S createService(final Class<S> serviceClass, final Double latitude,
+                                      final Double longitude, final Long dateTime) {
+        mLatitude = latitude;
+        mLongitude = longitude;
+        mDateTime = dateTime / 1000L;
         return retrofit.create(serviceClass);
     }
+
 }
