@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.fges.meteo.R;
@@ -50,6 +51,10 @@ public class DayFragment extends Fragment {
     @BindView(R.id.image_weather)
     ImageView mImageWeather;
 
+    @BindView(R.id.progress_bar_weather)
+    ProgressBar mProgressBarWeather;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -88,9 +93,17 @@ public class DayFragment extends Fragment {
             mTextDate.setText(simpleDateFormat.format(dateFragment.toDate()));
         }
 
+        getInformationWeather(context, weatherManager, isToday);
+
+        return rootView;
+    }
+
+    private void getInformationWeather(final Context context, WeatherManager weatherManager, final boolean isToday) {
         weatherManager.getWeather(new MyCallback() {
             @Override
             public WeatherFormServer onSuccess(WeatherFormServer weather) {
+                mImageWeather.setVisibility(View.VISIBLE);
+                mProgressBarWeather.setVisibility(View.GONE);
 
                 IIformationWeatherData informationWeather = null;
                 if (isToday) {
@@ -126,13 +139,12 @@ public class DayFragment extends Fragment {
                 mTextDate.setText(error);
             }
         });
-
-        return rootView;
     }
 
 
     public interface MyCallback {
         WeatherFormServer onSuccess(WeatherFormServer listCategory);
+
         void onError(String error);
     }
 
