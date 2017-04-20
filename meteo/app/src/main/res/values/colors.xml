@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colortBackgroundTopFragmentWeather">#495bbd</color>
+    <color name="colortBackgroundBottompFragmentWeather">#2e3ba1</color>
+    <color name="colorWhite">#ffffff</color>
     <color name="colorPrimary">#495bbd</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
