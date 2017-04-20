@@ -11,8 +11,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
 
 import com.fges.meteo.R;
 import com.fges.meteo.ui.TrackGPS;
@@ -30,6 +28,7 @@ public class DayActivity extends AppCompatActivity {
     private static double latitude;
     @BindView(R.id.view_pager)
     ViewPager mViewPager;
+
     Context mContext;
 
     public static double getLongitude() {
@@ -40,16 +39,20 @@ public class DayActivity extends AppCompatActivity {
         return latitude;
     }
 
+    public ViewPager getmViewPager() {
+        return mViewPager;
+    }
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_day);
         ButterKnife.bind(this);
         mContext = this;
 
         if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            final TrackGPS gps = new TrackGPS(this);
-            generateFragmentWithGps(gps);
+            generateFragmentWithGps();
         } else {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
         }
@@ -61,20 +64,9 @@ public class DayActivity extends AppCompatActivity {
             case MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE: {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    final TrackGPS gps = new TrackGPS(this);
-                    generateFragmentWithGps(gps);
+                    generateFragmentWithGps();
                 } else {
-
-                    new AlertDialog.Builder(this)
-                            .setTitle("GPS")
-                            .setMessage("Il est nécessaire d'utiliser le GPS pour cette application")
-                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    ActivityCompat.requestPermissions(DayActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
-                                }
-                            })
-                            .setIcon(android.R.drawable.ic_dialog_alert)
-                            .show();
+                    createAlertGps();
                 }
                 break;
             }
@@ -82,7 +74,21 @@ public class DayActivity extends AppCompatActivity {
         }
     }
 
-    private void generateFragmentWithGps(TrackGPS gps) {
+    private void createAlertGps() {
+        new AlertDialog.Builder(this)
+                .setTitle("GPS")
+                .setMessage("Il est nécessaire d'utiliser le GPS pour cette application")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        ActivityCompat.requestPermissions(DayActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+    }
+
+    private void generateFragmentWithGps() {
+        final TrackGPS gps = new TrackGPS(this);
         longitude = gps.getLongitude();
         latitude = gps.getLatitude();
 
@@ -91,4 +97,6 @@ public class DayActivity extends AppCompatActivity {
         mViewPager.setAdapter(mDayAdapter);
         mViewPager.setCurrentItem(mDayAdapter.getCurrentDatePosition());
     }
+
+
 }

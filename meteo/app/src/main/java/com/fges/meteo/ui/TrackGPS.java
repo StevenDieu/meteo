@@ -50,10 +50,8 @@ public class TrackGPS extends Service implements LocationListener {
                 Toast.makeText(mContext, "Aucun fournisseur de services n'est disponible, activer la géolocalisation !", Toast.LENGTH_SHORT).show();
             } else {
                 this.canGetLocation = true;
-                // First get location from Network Provider
-                if (checkNetwork) {
-                    Toast.makeText(mContext, "Network", Toast.LENGTH_SHORT).show();
 
+                if (checkNetwork) {
                     try {
                         locationManager.requestLocationUpdates(
                                 LocationManager.NETWORK_PROVIDER,
