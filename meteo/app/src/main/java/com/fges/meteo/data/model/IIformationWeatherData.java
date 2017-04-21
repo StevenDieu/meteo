@@ -20,4 +20,15 @@ public interface IIformationWeatherData {
     double getHumidity();
 
     double getWindSpeed();
+
+    int getTime();
+
+    double getPrecipIntensity();
+
+    double getPrecipProbability();
+
+    double getPressure();
+
+    double getOzone();
+
 }

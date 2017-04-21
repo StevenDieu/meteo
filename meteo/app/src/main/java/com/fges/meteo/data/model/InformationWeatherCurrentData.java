@@ -10,6 +10,12 @@ public class InformationWeatherCurrentData implements IIformationWeatherData {
     private double temperature;
     private double humidity;
     private double windSpeed;
+    private int time;
+    private double precipIntensity;
+    private double precipProbability;
+    private double cloudCover;
+    private double pressure;
+    private double ozone;
 
     @Override
     public String getSummary() {
@@ -41,4 +47,28 @@ public class InformationWeatherCurrentData implements IIformationWeatherData {
         return windSpeed;
     }
 
+    @Override
+    public int getTime() {
+        return time;
+    }
+
+    @Override
+    public double getPrecipIntensity() {
+        return precipIntensity;
+    }
+
+    @Override
+    public double getPrecipProbability() {
+        return precipProbability;
+    }
+
+    @Override
+    public double getPressure() {
+        return pressure;
+    }
+
+    @Override
+    public double getOzone() {
+        return ozone;
+    }
 }

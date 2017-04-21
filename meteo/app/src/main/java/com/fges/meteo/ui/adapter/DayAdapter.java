@@ -9,14 +9,14 @@ import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 
 
-public class GenericDayAdapter<T extends Fragment> extends FragmentStatePagerAdapter {
+public class DayAdapter<T extends Fragment> extends FragmentStatePagerAdapter {
 
     private static final Integer DAYS_BEFORE = 7;
     private static final Integer DAYS_AFTER = 7;
 
     private Class<T> mViewClazz;
 
-    public GenericDayAdapter(final FragmentManager fm,final Class<T> viewClazz) {
+    public DayAdapter(final FragmentManager fm, final Class<T> viewClazz) {
         super(fm);
         mViewClazz = viewClazz;
     }

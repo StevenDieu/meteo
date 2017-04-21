@@ -14,7 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.fges.meteo.R;
 import com.fges.meteo.ui.TrackGPS;
-import com.fges.meteo.ui.adapter.GenericDayAdapter;
+import com.fges.meteo.ui.adapter.DayAdapter;
 import com.fges.meteo.ui.fragment.DayFragment;
 
 import butterknife.BindView;
@@ -92,7 +92,7 @@ public class DayActivity extends AppCompatActivity {
         longitude = gps.getLongitude();
         latitude = gps.getLatitude();
 
-        final GenericDayAdapter mDayAdapter = new GenericDayAdapter<>(this.getSupportFragmentManager(), DayFragment.class);
+        final DayAdapter mDayAdapter = new DayAdapter<>(this.getSupportFragmentManager(), DayFragment.class);
 
         mViewPager.setAdapter(mDayAdapter);
         mViewPager.setCurrentItem(mDayAdapter.getCurrentDatePosition());
