@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colortBackgroundBottompFragmentWeather">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -16,8 +17,8 @@
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colortBackgroundTopFragmentWeather"
             android:layout_marginBottom="30sp"
+            android:background="@color/colortBackgroundTopFragmentWeather"
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginEnd="64dp"
             app:expandedTitleMarginStart="48dp"
@@ -163,43 +164,10 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_information_weather"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colortBackgroundBottompFragmentWeather"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/card_view"
-            android:layout_width="fill_parent"
-            android:layout_height="100dp"
-            android:layout_margin="5dp"
-            app:cardCornerRadius="2dp"
-            app:contentPadding="10dp">
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-
-                <TextView
-                    android:id="@+id/text_title_summary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:text="Description"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/text_summary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/text_title_summary"
-                    android:layout_marginTop="10dp" />
-
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-
-    </android.support.v4.widget.NestedScrollView>
-
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </android.support.design.widget.CoordinatorLayout>

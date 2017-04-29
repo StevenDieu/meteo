@@ -11,6 +11,12 @@ public class InformationWeatherDailyData implements IIformationWeatherData {
     private String icon;
     private double humidity;
     private double windSpeed;
+    private int time;
+    private double precipIntensity;
+    private double precipProbability;
+    private double cloudCover;
+    private double pressure;
+    private double ozone;
 
     public double getTemperatureMin() {
         return temperatureMin;
@@ -49,5 +55,34 @@ public class InformationWeatherDailyData implements IIformationWeatherData {
     @Override
     public double getWindSpeed() {
         return windSpeed;
+    }
+
+    @Override
+    public int getTime() {
+        return time;
+    }
+
+    @Override
+    public double getPrecipIntensity() {
+        return precipIntensity;
+    }
+
+    @Override
+    public double getPrecipProbability() {
+        return precipProbability;
+    }
+
+    public double getCloudCover() {
+        return cloudCover;
+    }
+
+    @Override
+    public double getPressure() {
+        return pressure;
+    }
+
+    @Override
+    public double getOzone() {
+        return ozone;
     }
 }
