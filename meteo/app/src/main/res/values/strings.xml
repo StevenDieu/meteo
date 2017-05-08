@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">Meteo</string>
+    <string name="now">Maintenant</string>
+    <string name="time_zone_paris">Europe/Paris</string>
+    <string name="date_format_dd_MMMM_yyyy">dd MMMM yyyy</string>
+    <string name="drawable">drawable</string>
+    <string name="mph">mph</string>
+    <string name="pourcente">&#160;%</string>
+    <string name="prefix_weather">weather_</string>
+    <string name="degres">°</string>
+    <string name="suffix_now">&#160;maintenant</string>
+    <string name="suffix_durring_the_day">&#160;dans la journée</string>
+    <string name="hours">Heure</string>
+    <string name="cloud_cover_day">Couverture nuageuse dans la journée</string>
+    <string name="pourcente_cloud_cover">&#160;% de couverture des nuages</string>
+    <string name="prefix_description">Description</string>
+    <string name="prefix_position">Position</string>
+    <string name="my_position">Ma position</string>
+    <string name="prefix_probability_rain">Probabilité qu\'il pleuve</string>
+    <string name="prefix_intensity_rain">Intensité de la pluie</string>
+    <string name="prefix_pressure_air">La pression de l\'air</string>
+    <string name="prefixe_ozone">Mesure de la masse surfacique de l\'ozone atmosphérique</string>
+    <string name="millimeter_by_hour">&#160;Millimètre / Heure</string>
+    <string name="millibars">&#160;millibars</string>
+    <string name="du">&#160;DU</string>
+    <string name="date_format_HH_mm">HH:mm</string>
+    <string name="title">title</string>
+    <string name="description">description</string>
+    <string name="gps_is_neccesary">Il est nécessaire d\'utiliser le GPS pour cette application</string>
+    <string name="gps">GPS</string>
+    <string name="today">Aujourd\'hui</string>
 </resources>

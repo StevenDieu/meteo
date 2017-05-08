@@ -18,23 +18,23 @@ import java.util.Map;
 
 public class InformationWeatherAdapter extends RecyclerView.Adapter<InformationWeatherAdapter.ViewHolder> {
 
-    private ArrayList<Map<String,String>> inforamtionWeatherList;
+    private ArrayList<Map<String, String>> inforamtionWeatherList;
     private Context context;
 
-    public InformationWeatherAdapter(ArrayList<Map<String,String>> inforamtionWeatherList, Context context) {
+    public InformationWeatherAdapter(final ArrayList<Map<String, String>> inforamtionWeatherList, Context context) {
         this.inforamtionWeatherList = inforamtionWeatherList;
         this.context = context;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View wodView = inflater.inflate(R.layout.layout_information_weather,parent,false);
+    public ViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
+        final LayoutInflater inflater = LayoutInflater.from(context);
+        final View wodView = inflater.inflate(R.layout.layout_information_weather, parent, false);
         return new ViewHolder(wodView);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mTextTile.setText(inforamtionWeatherList.get(position).get("title"));
         holder.mTextDescription.setText(inforamtionWeatherList.get(position).get("description"));
     }
@@ -44,12 +44,12 @@ public class InformationWeatherAdapter extends RecyclerView.Adapter<InformationW
         return inforamtionWeatherList.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
+    static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mTextTile;
-        TextView mTextDescription;
+        final TextView mTextTile;
+        final TextView mTextDescription;
 
-        ViewHolder(View itemView) {
+        ViewHolder(final View itemView) {
             super(itemView);
             mTextTile = (TextView) itemView.findViewById(R.id.text_title);
             mTextDescription = (TextView) itemView.findViewById(R.id.text_description);

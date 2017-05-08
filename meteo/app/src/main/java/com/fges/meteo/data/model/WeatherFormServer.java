@@ -12,7 +12,7 @@ public class WeatherFormServer {
     private InformationWeatherCurrentData currently;
     private InformationWeatherDaily daily;
 
-      public String getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 

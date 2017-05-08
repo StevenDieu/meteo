@@ -9,19 +9,38 @@ import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "information_weather_current")
 public class InformationWeatherCurrentData implements IIformationWeatherData {
-    @DatabaseField(generatedId = true)
-    private int time;
+
+    @DatabaseField(id = true)
+    private Long time;
 
     @DatabaseField(canBeNull = false)
     private String summary;
+
+    @DatabaseField(canBeNull = false)
     private String icon;
+
+    @DatabaseField(canBeNull = false)
     private double temperature;
+
+    @DatabaseField(canBeNull = false)
     private double humidity;
+
+    @DatabaseField(canBeNull = false)
     private double windSpeed;
+
+    @DatabaseField(canBeNull = false)
     private double precipIntensity;
+
+    @DatabaseField(canBeNull = false)
     private double precipProbability;
+
+    @DatabaseField(canBeNull = false)
     private double cloudCover;
+
+    @DatabaseField(canBeNull = false)
     private double pressure;
+
+    @DatabaseField(canBeNull = false)
     private double ozone;
 
     @Override
@@ -55,7 +74,7 @@ public class InformationWeatherCurrentData implements IIformationWeatherData {
     }
 
     @Override
-    public int getTime() {
+    public Long getTime() {
         return time;
     }
 

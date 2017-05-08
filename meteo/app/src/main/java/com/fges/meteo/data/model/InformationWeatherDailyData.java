@@ -1,21 +1,48 @@
 package com.fges.meteo.data.model;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
 /**
  * Created by steven on 18/04/2017.
  */
 
+@DatabaseTable(tableName = "information_weather_daily")
 public class InformationWeatherDailyData implements IIformationWeatherData {
+    @DatabaseField(id = true)
+    private Long time;
+
+    @DatabaseField(canBeNull = false)
     private double temperatureMin;
+
+    @DatabaseField(canBeNull = false)
     private double temperatureMax;
+
+    @DatabaseField(canBeNull = false)
     private String summary;
+
+    @DatabaseField(canBeNull = false)
     private String icon;
+
+    @DatabaseField(canBeNull = false)
     private double humidity;
+
+    @DatabaseField(canBeNull = false)
     private double windSpeed;
-    private int time;
+
+    @DatabaseField(canBeNull = false)
     private double precipIntensity;
+
+    @DatabaseField(canBeNull = false)
     private double precipProbability;
+
+    @DatabaseField(canBeNull = false)
     private double cloudCover;
+
+    @DatabaseField(canBeNull = false)
     private double pressure;
+
+    @DatabaseField(canBeNull = false)
     private double ozone;
 
     public double getTemperatureMin() {
@@ -58,7 +85,7 @@ public class InformationWeatherDailyData implements IIformationWeatherData {
     }
 
     @Override
-    public int getTime() {
+    public Long getTime() {
         return time;
     }
 
@@ -84,5 +111,9 @@ public class InformationWeatherDailyData implements IIformationWeatherData {
     @Override
     public double getOzone() {
         return ozone;
+    }
+
+    public void setTime(Long time) {
+        this.time = time;
     }
 }
