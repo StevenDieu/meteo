@@ -21,7 +21,7 @@ public interface IIformationWeatherData {
 
     double getWindSpeed();
 
-    int getTime();
+    Long getTime();
 
     double getPrecipIntensity();
 

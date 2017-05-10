@@ -1,18 +1,14 @@
 package com.fges.meteo.ui;
 
-import android.Manifest;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
-import android.widget.Toast;
 
 public class TrackGPS extends Service implements LocationListener {
 
@@ -46,9 +42,7 @@ public class TrackGPS extends Service implements LocationListener {
             checkNetwork = locationManager
                     .isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
-            if (!checkGPS && !checkNetwork) {
-                Toast.makeText(mContext, "Aucun fournisseur de services n'est disponible, activer la géolocalisation !", Toast.LENGTH_SHORT).show();
-            } else {
+            if (checkGPS || checkNetwork) {
                 this.canGetLocation = true;
 
                 if (checkNetwork) {
@@ -69,7 +63,7 @@ public class TrackGPS extends Service implements LocationListener {
                             longitude = loc.getLongitude();
                         }
                     } catch (SecurityException e) {
-
+                        e.printStackTrace();
                     }
                 }
             }
@@ -91,7 +85,7 @@ public class TrackGPS extends Service implements LocationListener {
                             }
                         }
                     } catch (SecurityException e) {
-
+                        e.printStackTrace();
                     }
                 }
             }
@@ -115,6 +109,10 @@ public class TrackGPS extends Service implements LocationListener {
             latitude = loc.getLatitude();
         }
         return latitude;
+    }
+
+    public boolean isCanGetLocation() {
+        return canGetLocation;
     }
 
     @Override

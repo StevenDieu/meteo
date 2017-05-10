@@ -20,20 +20,20 @@ public class ServiceGenerator {
     private static final String BASE_URL = "https://api.darksky.net/";
     private static final String COMMA = ",";
 
-    private static Double mLatitude;
-    private static Double mLongitude;
-    private static Long mDateTime;
+    private Double mLatitude;
+    private Double mLongitude;
+    private Long mDateTime;
 
-    private static Retrofit.Builder builder =
+    private Retrofit.Builder builder =
             new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .client(configureHttpClient())
                     .addConverterFactory(GsonConverterFactory.create());
 
-    private static Retrofit retrofit = builder.build();
+    private Retrofit retrofit = builder.build();
 
 
-    private static OkHttpClient configureHttpClient() {
+    private OkHttpClient configureHttpClient() {
         final HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
 
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -65,8 +65,8 @@ public class ServiceGenerator {
         return httpClient.build();
     }
 
-    public static <S> S createService(final Class<S> serviceClass, final Double latitude,
-                                      final Double longitude, final Long dateTime) {
+    public <S> S createService(final Class<S> serviceClass, final Double latitude,
+                               final Double longitude, final Long dateTime) {
         mLatitude = latitude;
         mLongitude = longitude;
         mDateTime = dateTime / 1000L;

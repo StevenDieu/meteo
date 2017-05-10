@@ -17,9 +17,7 @@ import retrofit2.Response;
 
 public class WeatherManager {
     private static final WeatherManager instance = new WeatherManager();
-    private Double mLatitude;
-    private Double mLongitude;
-    private long mDateTime;
+
     private WeatherManager() {
     }
 
@@ -27,9 +25,10 @@ public class WeatherManager {
         return instance;
     }
 
-    public void getWeather(final DayFragment.MyCallback myCallback) {
+    public void getWeather(final DayFragment.MyCallback myCallback, Double latitude, Double longitude, long dateTime) {
 
-        final WeatherService weatherService = ServiceGenerator.createService(WeatherService.class, mLatitude, mLongitude, mDateTime);
+        ServiceGenerator serviceGenerator = new ServiceGenerator();
+        final WeatherService weatherService = serviceGenerator.createService(WeatherService.class, latitude, longitude, dateTime);
 
         final Call<WeatherFormServer> call = weatherService.getWeather();
 
@@ -45,26 +44,15 @@ public class WeatherManager {
                     myCallback.onSuccess(weatherFormServer);
 
                 } else {
-                    // error response, no access to resource?
+                    myCallback.onError();
                 }
             }
 
             @Override
             public void onFailure(Call<WeatherFormServer> call, Throwable t) {
-                Log.d("onFailure", t.toString());
+                myCallback.onError();
             }
         });
     }
 
-    public void setLatitude(Double latitude) {
-        mLatitude = latitude;
-    }
-
-    public void setLongitude(Double longitude) {
-        mLongitude = longitude;
-    }
-
-    public void setDateTime(long dateTime) {
-        this.mDateTime = dateTime;
-    }
 }
